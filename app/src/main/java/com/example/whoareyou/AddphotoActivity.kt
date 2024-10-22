@@ -7,6 +7,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -72,6 +73,7 @@ class AddphotoActivity : AppCompatActivity() {
             }
         }
         builder.show()
+
     }
 
     // Function to check if camera and storage permissions are granted
@@ -79,6 +81,20 @@ class AddphotoActivity : AppCompatActivity() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED ||
             ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE), 101)
+        }
+    }
+
+    fun onNext(selectedImageUri: Uri) {
+        // Make the confirm button visible
+        binding.confirmButton.visibility = View.VISIBLE
+
+        // Set click listener using the binding reference
+        binding.confirmButton.setOnClickListener {
+            // Create an Intent to start the next activity
+//            val intent = Intent(this, ConfirmUpphotoActivity::class.java)
+//            // Pass the selected image URI to the next activity
+//            intent.putExtra("imageUri", selectedImageUri.toString())
+//            startActivity(intent)
         }
     }
 
@@ -91,18 +107,35 @@ class AddphotoActivity : AppCompatActivity() {
                 PICK_IMAGE -> {
                     val selectedImage: Uri? = data?.data
                     selectedImage?.let {
+                        // Set the image to ImageView
                         binding.imageView.setImageURI(it)
                         binding.textViewFile.text = it.lastPathSegment
-                        binding.textViewFile.visibility = ImageView.VISIBLE
+                        binding.textViewFile.text = "รายละเอียดชื่อไฟล์: " + it.lastPathSegment
+                        binding.textViewFile.visibility = View.VISIBLE
+                        // Hide the instruction TextView
+                        binding.textView.visibility = View.GONE
+                        onNext(it)
                     }
                 }
                 CAMERA_REQUEST -> {
                     val photo: Bitmap = data?.extras?.get("data") as Bitmap
+                    // Set the captured photo to ImageView
                     binding.imageView.setImageBitmap(photo)
+                    // Set a general message as there is no file name
                     binding.textViewFile.text = "Captured Image"
-                    binding.textViewFile.visibility = ImageView.VISIBLE
+                    binding.textViewFile.visibility = View.VISIBLE
+                    // Hide the instruction TextView
+                    binding.textView.visibility = View.GONE
+                    // If you want to save the captured image as a file and pass the URI, you need to first save it
+                    // Pass a placeholder URI or handle this case appropriately
+                    val placeholderUri = Uri.parse("captured_image_placeholder")
+                    onNext(placeholderUri)
                 }
             }
         }
     }
+
+
+
+
 }
