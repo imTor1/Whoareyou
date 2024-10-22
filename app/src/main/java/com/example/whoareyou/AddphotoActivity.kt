@@ -88,13 +88,11 @@ class AddphotoActivity : AppCompatActivity() {
         // Make the confirm button visible
         binding.confirmButton.visibility = View.VISIBLE
 
-        // Set click listener using the binding reference
         binding.confirmButton.setOnClickListener {
             // Create an Intent to start the next activity
-//            val intent = Intent(this, ConfirmUpphotoActivity::class.java)
-//            // Pass the selected image URI to the next activity
-//            intent.putExtra("imageUri", selectedImageUri.toString())
-//            startActivity(intent)
+            val intent = Intent(this, yourfaceActivity::class.java)
+            intent.putExtra("imageUri", selectedImageUri.toString())
+            startActivity(intent)
         }
     }
 
