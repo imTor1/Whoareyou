@@ -7,24 +7,9 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
     tools:context=".AddphotoActivity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="6dp"
-        android:background="@color/pink1"
-        android:layout_marginBottom="150dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="WhoAreYou?"
-            android:layout_marginStart="10dp"
-            android:textStyle="bold"
-            android:textSize="32sp"
-            android:textColor="@color/white"/>
-    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -45,16 +30,15 @@
 
         <ImageView
             android:id="@+id/imageViewshow"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_centerInParent="true"
-            android:padding="20dp"
-            android:scaleType="centerCrop" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"/>
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="190dp"
+            android:layout_height="190dp"
             android:layout_centerInParent="true"
             android:padding="20dp"
             android:src="@drawable/rename"
@@ -82,13 +66,20 @@
         android:visibility="gone"
         android:text="รายละเอียด 1234-13245-13.jpg" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/confirmButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:textSize="16dp"
+        android:background="@drawable/rounded_button"
         android:backgroundTint="#F694C1"
-        android:visibility="gone"
-        android:text="ยืนยัน"/>
+        android:text="ยืนยัน"
+        android:textStyle="bold"
+        android:shadowColor="#FB6F92"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="1"/>
+
+
 </LinearLayout>

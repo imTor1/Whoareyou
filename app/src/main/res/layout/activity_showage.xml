@@ -9,6 +9,22 @@
     android:background="@drawable/background"
     tools:context=".ShowageActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pink1"
+        android:padding="6dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="WhoAreYou?"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
     <!-- Back Button -->
     <android.widget.Button
         android:id="@+id/buttonback"
@@ -71,7 +87,6 @@
 
         <!-- Back Button -->
         <android.widget.Button
-            android:id="@+id/backButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ย้อนกลับ"
@@ -79,7 +94,6 @@
             android:backgroundTint="#9C6876"
             android:padding="10dp"
             android:layout_marginEnd="20dp" />
-
 
         <!-- Upload New Image Button -->
         <android.widget.Button
