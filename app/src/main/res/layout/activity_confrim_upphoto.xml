@@ -1,83 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.Toolbar
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:orientation="vertical"
-    android:background="@drawable/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
     tools:context=".confrimUpphotoActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/clickupload"
-        android:layout_width="330dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:padding="25dp"
-        android:orientation="vertical"
-        android:background="@drawable/image_border"
-        android:gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/clickupload"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:textStyle="bold"
-            android:layout_marginBottom="10dp"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            android:text="ขอความยินยอมในการเข้าถึงและจัดเก็บรูปภาพ" />
+            android:layout_margin="20dp"
+            android:background="@drawable/image_border"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="25dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="@string/policy"
-            android:layout_margin="10dp"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="14dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:text="ขอความยินยอมในการเข้าถึงและจัดเก็บรูปภาพ"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="35dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="10dp"
+                android:text="@string/policy"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
 
-            <android.widget.Button
-                android:id="@+id/deny_button"
-                android:layout_width="100dp"
-                android:layout_height="35dp"
-                android:textSize="12sp"
-                android:layout_marginRight="15dp"
-                android:layout_gravity="start"
-                android:background="@drawable/rounded_button"
-                android:backgroundTint="@null"
-                android:text="ไม่อนุญาต"
-                android:layout_marginStart="20dp"
-                android:textColor="#FFFFFF"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp">
 
-            <android.widget.Button
-                android:id="@+id/allow_button"
-                android:layout_width="100dp"
-                android:layout_height="35dp"
-                android:layout_alignParentEnd="true"
-                android:layout_gravity="end"
-                android:background="@drawable/rounded_button"
-                android:backgroundTint="@color/green"
-                android:layout_marginEnd="15dp"
-                android:text="อนุญาต"
-                android:textSize="12dp" />
+                <android.widget.Button
+                    android:id="@+id/deny_button"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/rounded_button"
+                    android:backgroundTint="@null"
+                    android:text="ไม่อนุญาต"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
 
-        </RelativeLayout>
+                <android.widget.Button
+                    android:id="@+id/allow_button"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/rounded_button"
+                    android:backgroundTint="@color/green"
+                    android:text="อนุญาต"
+                    android:textSize="12dp" />
+
+            </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
-
-    </LinearLayout>
-</androidx.appcompat.widget.Toolbar>
+</LinearLayout>
