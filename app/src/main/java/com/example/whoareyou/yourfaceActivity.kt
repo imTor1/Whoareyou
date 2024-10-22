@@ -25,13 +25,22 @@ class yourfaceActivity : AppCompatActivity() {
         val imageUri = Uri.parse(imageUriString)
         val imageView = findViewById<ImageView>(R.id.imageView)
         val back = findViewById<Button>(R.id.buttonback)
-
+        val buttonage = findViewById<Button>(R.id.buttonage)
+        val buttonstar = findViewById<Button>(R.id.buttonstar)
         back.setOnClickListener {
             finish()
         }
-
         imageView.setImageURI(imageUri)
-
+        buttonage.setOnClickListener {
+            val intent = android.content.Intent(this, ShowageActivity::class.java)
+            intent.putExtra("imageUri", imageUriString.toString())
+            startActivity(intent)
+        }
+        buttonstar.setOnClickListener {
+            val intent = android.content.Intent(this, ShowcelebrityActivity::class.java)
+            intent.putExtra("imageUri", imageUriString.toString())
+            startActivity(intent)
+        }
 
 
     }
