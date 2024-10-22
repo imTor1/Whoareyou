@@ -24,7 +24,6 @@ class ShowcelebrityActivity : AppCompatActivity() {
             insets
         }
         val imageView = findViewById<ImageView>(R.id.imageViewmy)
-        val imageView2 = findViewById<ImageView>(R.id.celebrity_image)
         val celebrity_name = findViewById<TextView>(R.id.celebrity_name)
         val deny_button = findViewById<Button>(R.id.deny_button)
         val allow_button = findViewById<Button>(R.id.allow_button)
