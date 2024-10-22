@@ -10,6 +10,8 @@
     tools:context=".AddphotoActivity">
 
 
+
+
     <android.widget.Button
         android:id="@+id/button"
         android:layout_width="35dp"
