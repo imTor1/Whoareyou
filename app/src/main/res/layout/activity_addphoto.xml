@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/addphoto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffe5ec"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".AddphotoActivity">
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/clickupload"
+        android:layout_width="280dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:background="@drawable/image_border"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerInParent="true"
+            android:padding="20dp"
+
+            android:src="@drawable/rename" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/imageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="175dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:text="กรุณาอัพโหลดรูปภาพ" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="16dp"
+        android:visibility="gone"
+        android:text="รายละเอียด   1234-13245-13.jpg"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="16dp"
+        android:backgroundTint="#F694C1"
+        android:visibility="gone"
+        android:text="ยืนยัน"/>
+
+</LinearLayout>
