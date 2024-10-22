@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.view.View
 import android.widget.ImageView
@@ -17,6 +18,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.whoareyou.databinding.ActivityAddphotoBinding
+import java.io.File
+import java.io.FileOutputStream
 
 class AddphotoActivity : AppCompatActivity() {
 
@@ -88,13 +91,11 @@ class AddphotoActivity : AppCompatActivity() {
         // Make the confirm button visible
         binding.confirmButton.visibility = View.VISIBLE
 
-        // Set click listener using the binding reference
         binding.confirmButton.setOnClickListener {
             // Create an Intent to start the next activity
-//            val intent = Intent(this, ConfirmUpphotoActivity::class.java)
-//            // Pass the selected image URI to the next activity
-//            intent.putExtra("imageUri", selectedImageUri.toString())
-//            startActivity(intent)
+            val intent = Intent(this, yourfaceActivity::class.java)
+            intent.putExtra("imageUri", selectedImageUri.toString())
+            startActivity(intent)
         }
     }
 
@@ -126,15 +127,31 @@ class AddphotoActivity : AppCompatActivity() {
                     binding.textViewFile.visibility = View.VISIBLE
                     // Hide the instruction TextView
                     binding.textView.visibility = View.GONE
-                    // If you want to save the captured image as a file and pass the URI, you need to first save it
-                    // Pass a placeholder URI or handle this case appropriately
-                    val placeholderUri = Uri.parse("captured_image_placeholder")
+
+                    // You can optionally save the captured image to the device and get its Uri
+                    // Here's a simple example using a placeholder Uri
+                    val placeholderUri = saveImageToExternalStorage(photo)
                     onNext(placeholderUri)
                 }
             }
         }
     }
 
+    private fun saveImageToExternalStorage(bitmap: Bitmap): Uri {
+        val imagesFolder = File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "YourImages")
+        if (!imagesFolder.exists()) {
+            imagesFolder.mkdirs()
+        }
+
+        val file = File(imagesFolder, "${System.currentTimeMillis()}.jpg")
+        val outputStream = FileOutputStream(file)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+        outputStream.flush()
+        outputStream.close()
+
+        // Return the Uri of the saved file
+        return Uri.fromFile(file)
+    }
 
 
 

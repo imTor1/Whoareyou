@@ -7,13 +7,29 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
-    tools:context=".AddphotoActivity">
+    tools:context=".yourfaceActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:background="@color/pink1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WhoAreYou?"
+            android:layout_marginStart="10dp"
+            android:textStyle="bold"
+            android:textSize="32sp"
+            android:textColor="@color/white"/>
+    </LinearLayout>
 
 
 
 
     <android.widget.Button
-        android:id="@+id/button"
+        android:id="@+id/buttonback"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginTop="40dp"
@@ -52,7 +68,7 @@
     </RelativeLayout>
 
     <android.widget.Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonage"
         android:layout_width="288dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
@@ -60,10 +76,10 @@
         android:layout_marginTop="50dp"
         android:backgroundTint="@color/purple"
         android:textSize="20dp"
-        android:text="คุณอายุเท่าไรหร่?" />
+        android:text="คุณอายุเท่าไหร่?" />
 
     <android.widget.Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonstar"
         android:layout_width="288dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
