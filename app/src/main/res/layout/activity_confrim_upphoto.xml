@@ -1,20 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:orientation="vertical"
-    android:gravity="center"
     android:background="@drawable/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".confrimUpphotoActivity">
 
+    <!-- LinearLayout for "WhoAreYou?" at the top -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:background="@color/pink1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WhoAreYou?"
+            android:layout_marginStart="10dp"
+            android:textStyle="bold"
+            android:textSize="32sp"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center">
+
     <LinearLayout
         android:id="@+id/clickupload"
-        android:layout_width="300dp"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_margin="20dp"
         android:padding="25dp"
         android:orientation="vertical"
         android:background="@drawable/image_border"
@@ -25,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:textStyle="bold"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:textColor="@color/black"
             android:textSize="16dp"
             android:text="ขอความยินยอมในการเข้าถึงและจัดเก็บรูปภาพ" />
@@ -36,28 +58,26 @@
             android:layout_centerHorizontal="true"
             android:text="@string/policy"
             android:layout_margin="10dp"
-            android:padding="20dp"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="10dp"
-            android:textStyle="bold" />
+            android:textSize="14dp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="35dp">
 
             <android.widget.Button
                 android:id="@+id/deny_button"
                 android:layout_width="100dp"
                 android:layout_height="35dp"
                 android:textSize="12sp"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="15dp"
                 android:layout_gravity="start"
                 android:background="@drawable/rounded_button"
                 android:backgroundTint="@null"
                 android:text="ไม่อนุญาต"
+                android:layout_marginStart="20dp"
                 android:textColor="#FFFFFF"/>
 
             <Button
@@ -66,13 +86,13 @@
                 android:layout_height="35dp"
                 android:layout_alignParentEnd="true"
                 android:layout_gravity="end"
-                android:layout_marginEnd="1dp"
                 android:background="@drawable/rounded_button"
+                android:layout_marginEnd="15dp"
                 android:text="อนุญาต"
                 android:textSize="12dp" />
 
         </RelativeLayout>
     </LinearLayout>
 
-
+    </LinearLayout>
 </LinearLayout>
