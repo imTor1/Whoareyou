@@ -4,21 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:orientation="vertical"
-    android:layout_gravity="center"
     android:gravity="center"
-    android:background="@drawable/background"
+    android:background="#ffe5ec"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".confrimUpphotoActivity">
 
-
-
     <LinearLayout
         android:id="@+id/clickupload"
-        android:layout_width="wrap_content"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="40dp"
         android:padding="25dp"
         android:orientation="vertical"
         android:background="@drawable/image_border"
@@ -29,9 +25,9 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:textStyle="bold"
-            android:layout_marginBottom="14dp"
+            android:layout_marginBottom="20dp"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="10dp"
             android:text="ขอความยินยอมในการเข้าถึงและจัดเก็บรูปภาพ" />
 
         <TextView
@@ -39,37 +35,36 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="@string/policy"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:padding="20dp"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="14dp" />
+            android:textSize="10dp"
+            android:textStyle="bold" />
 
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="65dp"
+            android:layout_marginTop="30dp"
             android:orientation="horizontal">
 
             <Button
-                android:layout_width="95dp"
+                android:id="@+id/deny_button"
+                android:layout_width="100dp"
                 android:layout_height="40dp"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:layout_gravity="start"
-                android:layout_marginStart="30dp"
-                android:background="@drawable/rounded_button"
-                android:text="ไม่อนุญาต"
-                android:textColor="#FFFFFF"/>
+                android:backgroundTint="#FF245B"
+                android:text="ไม่อนุญาต"/>
 
             <Button
-                android:layout_width="95dp"
+                android:id="@+id/allow_button"
+                android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
                 android:layout_gravity="end"
-                android:layout_marginEnd="30dp"
+                android:layout_marginEnd="1dp"
+                android:backgroundTint="#00E45C"
                 android:text="อนุญาต"
-                android:background="@drawable/rounded_button"
                 android:textSize="12dp" />
 
         </RelativeLayout>
