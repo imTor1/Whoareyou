@@ -52,7 +52,8 @@
         android:layout_gravity="center"
         android:textStyle="bold"
         android:layout_marginTop="50dp"
-        android:backgroundTint="@color/purple"
+        android:backgroundTint="@color/blue2"
+        android:textColor="@color/blue"
         android:textSize="20dp"
         android:text="คุณอายุเท่าไหร่?" />
 
@@ -64,7 +65,8 @@
         android:layout_marginTop="20dp"
         android:textStyle="bold"
         android:textSize="18dp"
-        android:backgroundTint="@color/blue"
+        android:textColor="@color/purple"
+        android:backgroundTint="@color/purple2"
         android:text="คุณหน้าเหมือนดาราคนไหน?" />
 
 
