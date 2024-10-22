@@ -79,8 +79,7 @@
         android:shadowColor="#FB6F92"
         android:shadowDx="2"
         android:shadowDy="2"
-        android:shadowRadius="1"
-        android:visibility="gone"/>
+        android:shadowRadius="1"/>
 
 
 </LinearLayout>
