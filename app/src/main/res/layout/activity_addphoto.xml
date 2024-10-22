@@ -26,6 +26,7 @@
             android:textColor="@color/white"/>
     </LinearLayout>
 
+
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
