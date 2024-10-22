@@ -25,16 +25,7 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <!-- Back Button -->
-    <android.widget.Button
-        android:id="@+id/buttonback"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_gravity="start"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/arrow" />
+
 
     <!-- Age TextView -->
     <TextView
@@ -87,6 +78,7 @@
 
         <!-- Back Button -->
         <android.widget.Button
+            android:id="@+id/buttonback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ย้อนกลับ"

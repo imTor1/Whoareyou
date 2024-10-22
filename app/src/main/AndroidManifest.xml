@@ -27,7 +27,7 @@
             android:name=".ShowcelebrityActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ShowageActivity"
             android:exported="false" />
         <activity
             android:name=".yourfaceActivity"
