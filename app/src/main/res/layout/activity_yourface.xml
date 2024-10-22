@@ -5,12 +5,12 @@
     android:id="@+id/yourface"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffe5ec"
+    android:background="@drawable/background"
     android:orientation="vertical"
     tools:context=".AddphotoActivity">
 
 
-    <Button
+    <android.widget.Button
         android:id="@+id/buttonback"
         android:layout_width="35dp"
         android:layout_height="35dp"
