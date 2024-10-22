@@ -77,7 +77,8 @@
         android:backgroundTint="@color/blue2"
         android:textSize="20dp"
         android:textColor="@color/blue"
-        android:text="คุณอายุเท่าไหร่?" />
+        android:text="คุณอายุเท่าไหร่?"
+        />
 
     <android.widget.Button
         android:id="@+id/buttonstar"
