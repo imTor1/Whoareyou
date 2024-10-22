@@ -45,25 +45,20 @@
             android:textColor="#000000"
             android:layout_marginTop="8dp"
             android:fontFamily="sans-serif-medium" /> <!-- ใช้ฟอนต์ตัวหนา -->
+
+        <TextView
+            android:id="@+id/similarity_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="คุณเหมือน 100 %"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#FF000000"
+            android:layout_marginTop="10dp" />
+
     </LinearLayout>
 
 
-    <RelativeLayout
-        android:id="@+id/clickupload"
-        android:layout_width="250dp"
-        android:layout_height="230dp"
-        android:layout_gravity="center"
-        android:background="@drawable/image_border"
-        android:gravity="center"
-        android:layout_marginTop="15dp">
-
-
-        <ImageView
-            android:id="@+id/celebrity_image"
-            android:layout_width="200dp"
-            android:layout_height="173dp"
-            app:srcCompat="@drawable/user" />
-    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/celebrity"
