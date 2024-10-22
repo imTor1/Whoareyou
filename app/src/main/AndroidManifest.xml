@@ -27,9 +27,6 @@
             android:name=".yourfaceActivity"
             android:exported="false" />
         <activity
-            android:name=".yourface"
-            android:exported="false" />
-        <activity
             android:name=".AddphotoActivity"
             android:exported="false" />
         <activity
