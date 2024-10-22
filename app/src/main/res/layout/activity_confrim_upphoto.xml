@@ -67,7 +67,7 @@
                 <android.widget.Button
                     android:id="@+id/deny_button"
                     android:layout_width="100dp"
-                    android:layout_height="35dp"
+                    android:layout_height="45dp"
                     android:layout_gravity="start"
                     android:layout_marginStart="20dp"
                     android:layout_marginRight="15dp"
@@ -75,19 +75,19 @@
                     android:backgroundTint="@null"
                     android:text="ไม่อนุญาต"
                     android:textColor="#FFFFFF"
-                    android:textSize="12sp" />
+                    android:textSize="13sp" />
 
                 <android.widget.Button
                     android:id="@+id/allow_button"
                     android:layout_width="100dp"
-                    android:layout_height="35dp"
+                    android:layout_height="45dp"
                     android:layout_alignParentEnd="true"
                     android:layout_gravity="end"
                     android:layout_marginEnd="15dp"
                     android:background="@drawable/rounded_button"
                     android:backgroundTint="@color/green"
                     android:text="อนุญาต"
-                    android:textSize="12dp" />
+                    android:textSize="13sp" />
 
             </RelativeLayout>
         </LinearLayout>

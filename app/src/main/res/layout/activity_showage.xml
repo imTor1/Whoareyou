@@ -72,20 +72,22 @@
         <android.widget.Button
             android:id="@+id/buttonback"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:text="ย้อนกลับ"
             android:textColor="#FFFFFF"
             android:backgroundTint="#9C6876"
             android:padding="10dp"
+            android:textSize="13dp"
             android:layout_marginEnd="20dp" />
 
         <!-- Upload New Image Button -->
         <android.widget.Button
             android:id="@+id/buttonupload"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:text="อัพโหลดรูปใหม่"
             android:textColor="#FFFFFF"
+            android:textSize="13dp"
             android:backgroundTint="#FF6F91"
             android:padding="10dp" />
     </LinearLayout>
