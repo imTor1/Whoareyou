@@ -5,7 +5,7 @@
     android:id="@+id/addphoto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffe5ec"
+    android:background="@drawable/background"
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".AddphotoActivity">
