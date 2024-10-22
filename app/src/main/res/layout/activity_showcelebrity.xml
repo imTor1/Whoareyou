@@ -50,10 +50,10 @@
             android:id="@+id/similarity_percentage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="คุณเหมือน 100 %"
+            android:text="100 %"
             android:textStyle="bold"
-            android:textSize="20sp"
-            android:textColor="#FF000000"
+            android:textSize="40sp"
+            android:textColor="#FF245B"
             android:layout_marginTop="10dp" />
 
     </LinearLayout>
