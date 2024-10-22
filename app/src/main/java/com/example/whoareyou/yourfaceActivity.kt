@@ -1,10 +1,12 @@
 package com.example.whoareyou
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -32,16 +34,23 @@ class yourfaceActivity : AppCompatActivity() {
         }
         imageView.setImageURI(imageUri)
         buttonage.setOnClickListener {
-            val intent = android.content.Intent(this, ShowageActivity::class.java)
-            intent.putExtra("imageUri", imageUriString.toString())
-            startActivity(intent)
+            if (imageUriString != null) {
+                val intent = Intent(this, ShowageActivity::class.java)
+                intent.putExtra("imageUri", imageUriString)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Image URI is missing", Toast.LENGTH_SHORT).show()
+            }
         }
+
         buttonstar.setOnClickListener {
-            val intent = android.content.Intent(this, ShowcelebrityActivity::class.java)
-            intent.putExtra("imageUri", imageUriString.toString())
-            startActivity(intent)
+            if (imageUriString != null) {
+                val intent = Intent(this, ShowcelebrityActivity::class.java)
+                intent.putExtra("imageUri", imageUriString)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Image URI is missing", Toast.LENGTH_SHORT).show()
+            }
         }
-
-
     }
 }
