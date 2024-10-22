@@ -19,6 +19,9 @@
         android:layout_gravity="center"
         android:visibility="gone" />
 
+
+
+
     <RelativeLayout
         android:id="@+id/clickupload"
         android:layout_width="270dp"

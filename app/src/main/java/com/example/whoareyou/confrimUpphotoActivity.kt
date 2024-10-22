@@ -22,7 +22,6 @@ class confrimUpphotoActivity : AppCompatActivity() {
             insets
         }
 
-
         // Find the buttons
         val allowButton = findViewById<Button>(R.id.allow_button)
         val denyButton = findViewById<Button>(R.id.deny_button)
