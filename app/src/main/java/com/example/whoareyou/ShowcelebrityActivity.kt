@@ -7,10 +7,15 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import okhttp3.*
+import java.io.File
+import java.io.IOException
+import okhttp3.MediaType.Companion.toMediaType
 
 class ShowcelebrityActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
@@ -39,5 +44,40 @@ class ShowcelebrityActivity : AppCompatActivity() {
         val imageUri = Uri.parse(imageUriString)
         imageView.setImageURI(imageUri)
 
+    }
+
+    private fun uploadImageToServer(imageUri: Uri) {
+        val file = File(imageUri.path)
+        val requestBody = MultipartBody.Builder()
+            .setType(MultipartBody.FORM)
+            .addFormDataPart("image", file.name, RequestBody.create("image/jpeg".toMediaType(), file)) // ใช้ toMediaType()
+            .build()
+
+        val request = Request.Builder()
+            .url("root_url")  // URL ของ API
+            .post(requestBody)
+            .build()
+
+        val client = OkHttpClient()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                // จัดการกรณีที่เกิดข้อผิดพลาด
+                runOnUiThread {
+                    Toast.makeText(this@ShowcelebrityActivity, "Failed to upload image", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                // จัดการผลลัพธ์จากเซิร์ฟเวอร์
+                runOnUiThread {
+                    if (response.isSuccessful) {
+                        Toast.makeText(this@ShowcelebrityActivity, "Image uploaded successfully", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this@ShowcelebrityActivity, "Failed to upload image", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        })
     }
 }
