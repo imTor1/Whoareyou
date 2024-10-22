@@ -48,6 +48,7 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/deny_button"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:textSize="12dp"
@@ -56,6 +57,7 @@
                 android:text="ไม่อนุญาต"/>
 
             <Button
+                android:id="@+id/allow_button"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
