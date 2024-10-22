@@ -89,6 +89,7 @@
 
         <!-- Upload New Image Button -->
         <android.widget.Button
+            android:id="@+id/buttonupload"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="อัพโหลดรูปใหม่"
