@@ -4,11 +4,15 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.text.SpannableString
+import android.text.Spanned
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -99,7 +103,6 @@ class AddphotoActivity : AppCompatActivity() {
         }
     }
 
-    // Handle the result of the image picker or camera
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -121,9 +124,11 @@ class AddphotoActivity : AppCompatActivity() {
                 CAMERA_REQUEST -> {
                     val photo: Bitmap = data?.extras?.get("data") as Bitmap
                     // Set the captured photo to ImageView
-                    binding.imageView.setImageBitmap(photo)
+                    binding.imageViewshow.setImageBitmap(photo)
                     // Set a general message as there is no file name
                     binding.textViewFile.text = "Captured Image"
+
+                    binding.imageView.visibility = View.GONE
                     binding.textViewFile.visibility = View.VISIBLE
                     // Hide the instruction TextView
                     binding.textView.visibility = View.GONE
