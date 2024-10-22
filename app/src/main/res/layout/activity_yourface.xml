@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
-    tools:context=".AddphotoActivity">
+    tools:context=".yourfaceActivity">
 
 
     <android.widget.Button
@@ -58,7 +58,7 @@
         android:layout_marginTop="50dp"
         android:backgroundTint="@color/purple"
         android:textSize="20dp"
-        android:text="คุณอายุเท่าไรหร่?" />
+        android:text="คุณอายุเท่าไหร่?" />
 
     <android.widget.Button
         android:id="@+id/buttonstar"
