@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">WhoAreYou?</string>
-    <string name="root_url">http://172.20.10.4:5000</string>
+    <string name="root_url">http://192.168.1.102:5000</string>
+    <string name="rooturl">http://192.168.1.102:3000</string>
 
     <string name="policy">ทางเราขอความยินยอมจากคุณ
 ในการเข้าถึงและจัดเก็บรูปภาพของคุณ
