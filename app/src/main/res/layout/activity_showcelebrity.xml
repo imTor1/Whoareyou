@@ -57,12 +57,12 @@
         android:gravity="center"
         android:layout_marginTop="15dp">
 
-
         <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="200dp"
-            android:layout_height="173dp"
-            app:srcCompat="@drawable/user" />
+            android:id="@+id/imageView"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -76,10 +76,10 @@
 
 
         <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="200dp"
-            android:layout_height="173dp"
-            app:srcCompat="@drawable/user" />
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"/>
 
     </RelativeLayout>
 

@@ -128,6 +128,7 @@ class AddphotoActivity : AppCompatActivity() {
                     // Set a general message as there is no file name
                     binding.textViewFile.text = "Captured Image"
 
+
                     binding.imageView.visibility = View.GONE
                     binding.textViewFile.visibility = View.VISIBLE
                     // Hide the instruction TextView
