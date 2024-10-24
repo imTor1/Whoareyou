@@ -111,8 +111,6 @@ class ShowcelebrityActivity : AppCompatActivity() {
                                 celebrity_name.text = predictedClass
                                 similarity_percentage.text = "$confidenceScore %"
 
-                                // ส่งข้อมูลไปยัง API /similarity
-                                sendSimilarityDataToServer(predictedClass, confidenceScore)
 
                             } catch (e: JSONException) {
                                 Toast.makeText(this@ShowcelebrityActivity, "Failed to parse response: ${e.message}", Toast.LENGTH_SHORT).show()
@@ -126,103 +124,6 @@ class ShowcelebrityActivity : AppCompatActivity() {
                     runOnUiThread {
                         Toast.makeText(this@ShowcelebrityActivity, "Error: $errorBody", Toast.LENGTH_SHORT).show()
                     }
-                }
-            }
-        })
-    }
-
-    private fun sendSimilarityDataToServer(predictedClass: String, confidenceScore: Double) {
-        getThaiCelebrityIdFromServer(predictedClass) { thaiCelebrityId ->
-            if (thaiCelebrityId != null) {
-                val client = OkHttpClient()
-
-                // สร้างวันที่ปัจจุบันในรูปแบบ "yyyy-MM-dd"
-                val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
-
-                // สร้าง JSON object สำหรับส่งข้อมูล
-                val jsonObject = JSONObject().apply {
-                    put("similarity_Date", currentDate)  // ใช้วันที่ปัจจุบัน
-                    put("similarityDetail_Percent", confidenceScore)
-                    put("ThaiCelebrities_ID", thaiCelebrityId)
-                }
-
-                val requestBody = jsonObject.toString().toRequestBody("application/json".toMediaType())
-
-                val request = Request.Builder()
-                    .url(resources.getString(R.string.root_url) + "/similarity")
-                    .post(requestBody)
-                    .build()
-
-                client.newCall(request).enqueue(object : Callback {
-                    override fun onFailure(call: Call, e: IOException) {
-                        runOnUiThread {
-                            Toast.makeText(this@ShowcelebrityActivity, "Failed to send data: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-
-                    override fun onResponse(call: Call, response: Response) {
-                        if (response.isSuccessful) {
-                            runOnUiThread {
-                                Toast.makeText(this@ShowcelebrityActivity, "Data sent successfully", Toast.LENGTH_SHORT).show()
-                            }
-                        } else {
-                            val errorBody = response.body?.string() ?: "Unknown error"
-                            runOnUiThread {
-                                Toast.makeText(this@ShowcelebrityActivity, "Error: $errorBody", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                    }
-                })
-            } else {
-                runOnUiThread {
-                    Toast.makeText(this@ShowcelebrityActivity, "Celebrity not found", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-    }
-
-    private fun getThaiCelebrityIdFromServer(celebrityName: String, callback: (Int?) -> Unit) {
-        val client = OkHttpClient()
-
-        val url = resources.getString(R.string.root_url) + "/get-celebrity-id?name=" + celebrityName
-        val request = Request.Builder()
-            .url(url)
-            .get()
-            .build()
-
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                runOnUiThread {
-                    Toast.makeText(this@ShowcelebrityActivity, "Failed to retrieve celebrity data: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
-                }
-                callback(null)
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                if (response.isSuccessful) {
-                    val responseBody = response.body?.string()
-                    if (responseBody != null) {
-                        try {
-                            val jsonObject = JSONObject(responseBody)
-                            val celebrityId = jsonObject.getInt("celebrityId")
-                            callback(celebrityId)
-                        } catch (e: JSONException) {
-                            runOnUiThread {
-                                Toast.makeText(this@ShowcelebrityActivity, "Failed to parse celebrity data: ${e.message}", Toast.LENGTH_SHORT).show()
-                            }
-                            callback(null)
-                        }
-                    } else {
-                        runOnUiThread {
-                            Toast.makeText(this@ShowcelebrityActivity, "Empty response", Toast.LENGTH_SHORT).show()
-                        }
-                        callback(null)
-                    }
-                } else {
-                    runOnUiThread {
-                        Toast.makeText(this@ShowcelebrityActivity, "Error: ${response.code}", Toast.LENGTH_SHORT).show()
-                    }
-                    callback(null)
                 }
             }
         })
