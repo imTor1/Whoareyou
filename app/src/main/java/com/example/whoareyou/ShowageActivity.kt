@@ -98,7 +98,7 @@ class ShowageActivity : AppCompatActivity() {
             .build()
 
         // API URL
-        val url = resources.getString(R.string.root_url) + "/predict/age"
+        val url = resources.getString(R.string.root_url) + "/ai/predict/age"
         Log.d("ShowageActivity", "Uploading image to $url")
 
         // Create the request

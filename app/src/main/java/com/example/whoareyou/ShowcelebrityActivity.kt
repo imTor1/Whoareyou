@@ -74,7 +74,7 @@ class ShowcelebrityActivity : AppCompatActivity() {
             .addFormDataPart("image", file.name, file.asRequestBody("image/jpeg".toMediaType()))
             .build()
 
-        val url = resources.getString(R.string.root_url) + "/predict"
+        val url = resources.getString(R.string.root_url) + "/ai/predict"
         if (url.isEmpty()) {
             Toast.makeText(this, "API URL is missing", Toast.LENGTH_SHORT).show()
             return
