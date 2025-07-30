@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,31 +8,31 @@
     android:orientation="vertical"
     tools:context=".ShowcelebrityActivity">
 
+    <!-- 🔹 ปุ่มย้อนกลับ (Arrow) -->
     <android.widget.Button
-        android:id="@+id/button"
+        android:id="@+id/button_back"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:background="@drawable/arrow"
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="40dp" />
+        android:layout_marginLeft="20dp"
+        android:onClick="onBackPressed" /> <!-- กำหนดให้กดแล้วกลับไปหน้าก่อนหน้า -->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_marginTop="1dp">
+        android:layout_marginTop="20dp">
 
         <TextView
             android:id="@+id/you_look_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="คุณหน้าคล้ายกับ ..."
-            android:layout_marginRight="40dp"
             android:textStyle="bold"
             android:textSize="20sp"
             android:textColor="#000000" />
-
 
         <TextView
             android:id="@+id/celebrity_name"
@@ -41,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="sans-serif-medium"
-            android:text="นาย ณภัทร"
+            android:text=""
             android:textColor="#000000"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -50,16 +49,14 @@
             android:id="@+id/similarity_percentage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="100 %"
+            android:text=" %"
             android:textStyle="bold"
             android:textSize="40sp"
             android:textColor="#FF245B"
             android:layout_marginTop="10dp" />
-
     </LinearLayout>
 
-
-
+    <!-- 🔹 กรอบแสดงรูปดาราที่คล้าย -->
     <RelativeLayout
         android:id="@+id/celebrity"
         android:layout_width="250dp"
@@ -75,42 +72,25 @@
             android:layout_height="300dp"
             android:scaleType="centerCrop"
             android:adjustViewBounds="true"/>
-
     </RelativeLayout>
 
+    <!-- 🔹 ปุ่มอัปโหลดใหม่ (อยู่ตรงกลาง) -->
     <RelativeLayout
-        android:layout_width="280dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
-
-        <android.widget.Button
-            android:id="@+id/deny_button"
-            android:layout_width="100dp"
-            android:layout_height="45dp"
-            android:layout_gravity="start"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/rounded_button"
-            android:backgroundTint="@color/brown"
-            android:textStyle="bold"
-            android:text="ย้อนกลับ"
-            android:textSize="13dp"
-            android:textColor="#FFFFFF" />
+        android:gravity="center">
 
         <android.widget.Button
             android:id="@+id/allow_button"
             android:layout_width="150dp"
             android:layout_height="45dp"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="end"
-            android:layout_marginEnd="1dp"
+            android:layout_centerHorizontal="true"
             android:background="@drawable/rounded_button"
             android:backgroundTint="@color/pink1"
             android:text="อัพโหลดรูปใหม่"
             android:textStyle="bold"
             android:textSize="13dp" />
-
     </RelativeLayout>
 
 </LinearLayout>

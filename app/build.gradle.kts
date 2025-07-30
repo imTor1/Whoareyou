@@ -4,17 +4,46 @@ plugins {
 }
 
 android {
-    namespace = "com.example.whoareyou"
+    signingConfigs {
+        getByName("debug") {
+            storeFile =
+                file("C:\\Users\\kitti\\AndroidStudioProjects\\Whoareyou\\.keystore\\WhoAreYou_App.jks")
+            storePassword = "Kittipob262546"
+            keyAlias = "AppWhoAreYou"
+            keyPassword = "Kittipob262546"
+        }
+
+        create("release") {  // ✅ เพิ่ม release signingConfig
+            storeFile = file("C:/Users/kitti/.keystore/whoareyou.jks") // ✅ ใช้ Keystore เดียวกัน
+            storePassword = "Kittipob262546"
+            keyAlias = "AppWhoAreYou"
+            keyPassword = "Kittipob262546"
+        }
+    }
+
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("release") // ✅ ใช้ release signingConfig
+        }
+    }
+    namespace = "com.kittipob.whoareyou"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.whoareyou"
+        applicationId = "com.kittipob.whoareyou"
         minSdk = 27
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    bundle {
+        storeArchive {
+            enable = true
+        }
     }
 
     buildFeatures {

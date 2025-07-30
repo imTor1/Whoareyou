@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package = "com.kittipob.whoareyou">
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -27,9 +28,9 @@
         <activity
             android:name=".ShowcelebrityActivity"
             android:exported="false" />
-        <activity
-            android:name=".ShowageActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".ShowageActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".yourfaceActivity"
             android:exported="false" />
@@ -38,6 +39,9 @@
             android:exported="false" />
         <activity
             android:name=".confrimUpphotoActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".RegisterActivity"
             android:exported="false"/>
         <activity
             android:name=".homeActivity"
