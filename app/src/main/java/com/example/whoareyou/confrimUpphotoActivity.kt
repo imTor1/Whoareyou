@@ -1,42 +1,42 @@
-package com.example.whoareyou
+package com.kittipob.whoareyou
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Toolbar
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class confrimUpphotoActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_confrim_upphoto)
 
-        // Set window insets
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        val sharedPreferences: SharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
 
-        // Find the buttons
-        val allowButton = findViewById<Button>(R.id.allow_button)
-        val denyButton = findViewById<Button>(R.id.deny_button)
+        val allowButton: Button = findViewById(R.id.allow_button)
+        val denyButton: Button = findViewById(R.id.deny_button)
 
-        // Set onClickListener for "อนุญาต" button
         allowButton.setOnClickListener {
-            val intent = Intent(this, AddphotoActivity::class.java)
-            startActivity(intent)
+            // ✅ บันทึกว่าให้ Consent แล้ว
+            editor.putBoolean("isConsentGiven", true)
+            editor.apply()
+
+            // ✅ ไปที่ `activity_addphoto`
+            startActivity(Intent(this, AddphotoActivity::class.java))
+            finish()
         }
-        // Set onClickListener for "ไม่อนุญาต" button
+
         denyButton.setOnClickListener {
-            finish()  // Close the activity and stop the app
+            // ❌ ถ้าปฏิเสธ → กลับไปที่หน้า Login
+            editor.putBoolean("isConsentGiven", false)
+            editor.apply()
+
+            startActivity(Intent(this, homeActivity::class.java))
+            finish()
         }
-
-
     }
-
 }

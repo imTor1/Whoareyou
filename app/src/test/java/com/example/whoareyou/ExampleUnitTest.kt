@@ -1,4 +1,4 @@
-package com.example.whoareyou
+package com.kittipob.whoareyou
 
 import org.junit.Test
 

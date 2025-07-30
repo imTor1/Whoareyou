@@ -1,4 +1,4 @@
-package com.example.whoareyou
+package com.kittipob.whoareyou
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -21,10 +21,9 @@ import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONException
 import org.json.JSONObject
-import java.text.SimpleDateFormat
-import java.util.*
 
 class ShowcelebrityActivity : AppCompatActivity() {
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,21 +37,26 @@ class ShowcelebrityActivity : AppCompatActivity() {
         }
 
         val imageView = findViewById<ImageView>(R.id.imageViewmy)
-        val denyButton = findViewById<Button>(R.id.deny_button)
+        val backButton = findViewById<Button>(R.id.button_back)
         val allowButton = findViewById<Button>(R.id.allow_button)
 
-        denyButton.setOnClickListener {
-            finish()
+        // ✅ ปุ่มย้อนกลับ (Arrow)
+        backButton.setOnClickListener {
+            finish() // กลับไปหน้าก่อนหน้านี้
         }
 
+        // ✅ ปุ่มอัปโหลดรูปใหม่ (กลับไปหน้า AddphotoActivity)
         allowButton.setOnClickListener {
             clearAppCache()
             val intent = Intent(this, AddphotoActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
+        // ✅ รับค่า URI ของภาพจาก Intent
         val imageUriString = intent.getStringExtra("imageUri")
         Log.d("ShowcelebrityActivity", "Image URI: $imageUriString")
+
         if (imageUriString != null) {
             val imageUri = Uri.parse(imageUriString)
             imageView.setImageURI(imageUri)
@@ -62,10 +66,19 @@ class ShowcelebrityActivity : AppCompatActivity() {
         }
     }
 
+    // ✅ ฟังก์ชันอัปโหลดรูปไปยังเซิร์ฟเวอร์
     private fun uploadImageToServer(imageUri: Uri) {
         val file = getFileFromUri(imageUri)
         if (file == null || !file.exists()) {
             Toast.makeText(this, "File not found or unable to create file", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val sharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE)
+        val token = sharedPreferences.getString("auth_token", "")
+
+        if (token.isNullOrEmpty()) {
+            Toast.makeText(this, "กรุณาลงชื่อเข้าใช้งานก่อน", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -83,6 +96,7 @@ class ShowcelebrityActivity : AppCompatActivity() {
         val request = Request.Builder()
             .url(url)
             .post(requestBody)
+            .addHeader("Authorization", "Bearer $token")  // ส่ง JWT Token ใน Authorization header
             .build()
 
         val client = OkHttpClient()
@@ -103,14 +117,13 @@ class ShowcelebrityActivity : AppCompatActivity() {
                         if (responseBody != null) {
                             try {
                                 val jsonObject = JSONObject(responseBody)
-                                val predictedClass = jsonObject.getString("predicted_class")
+                                val predictedClass = jsonObject.getString("predicted_match")
                                 val confidenceScore = jsonObject.getDouble("confidence_score")
-                                val celebrity_name = findViewById<TextView>(R.id.celebrity_name)
-                                val similarity_percentage = findViewById<TextView>(R.id.similarity_percentage)
+                                val celebrityName = findViewById<TextView>(R.id.celebrity_name)
+                                val similarityPercentage = findViewById<TextView>(R.id.similarity_percentage)
 
-                                celebrity_name.text = predictedClass
-                                similarity_percentage.text = "$confidenceScore %"
-
+                                celebrityName.text = predictedClass
+                                similarityPercentage.text = "$confidenceScore %"
 
                             } catch (e: JSONException) {
                                 Toast.makeText(this@ShowcelebrityActivity, "Failed to parse response: ${e.message}", Toast.LENGTH_SHORT).show()
@@ -129,7 +142,7 @@ class ShowcelebrityActivity : AppCompatActivity() {
         })
     }
 
-
+    // ✅ แปลง URI เป็นไฟล์เพื่ออัปโหลด
     private fun getFileFromUri(uri: Uri): File? {
         try {
             val contentResolver = contentResolver
@@ -151,6 +164,7 @@ class ShowcelebrityActivity : AppCompatActivity() {
         return null
     }
 
+    // ✅ ล้าง Cache รูปภาพ
     private fun clearAppCache() {
         try {
             val cacheDir = cacheDir
